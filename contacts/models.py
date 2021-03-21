@@ -5,6 +5,9 @@ from django.utils import timezone
 class Category(models.Model):
   name = models.CharField(max_length=240) 
 
+  def __str__(self):
+    return self.name
+
 class Contact(models.Model):
   name = models.CharField(max_length=255)
   last_name = models.CharField(max_length=255, blank=True)
