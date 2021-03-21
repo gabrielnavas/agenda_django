@@ -16,9 +16,9 @@
       {% for contact in contacts %}
         <tr>
           <td>
-            <a href="#"> João</a>
+            <a href="{% url 'contacts.show_contact' contact.id %}"> {{contact.name}}</a>
           </td>
-          <td>{{ contact.name }}</td>
+          <td>{{ contact.last_name }}</td>
           <td>{{ contact.phone }}</td>
           <td>{{ contact.category.name }}</td>
         </tr>  
