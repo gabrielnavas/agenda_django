@@ -14,5 +14,5 @@ class Contact(models.Model):
   phone = models.CharField(max_length=255)
   email = models.CharField(max_length=255, blank=True)
   created_at = models.DateField(default=timezone.now)
-  description = models.CharField(max_length=255) 
+  description = models.TextField(max_length=255) 
   category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
