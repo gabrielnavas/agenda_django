@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import Http404
 from .models import Contact
 
 def index(request):
@@ -9,7 +10,10 @@ def index(request):
 
 
 def show_contact(request, contact_id):
-  contact = Contact.objects.get(id=contact_id)
-  return render(request, 'contacts/show_contact.html', {
-    'contact': contact
-  })
+  try:
+    contact = Contact.objects.get(id=contact_id)
+    return render(request, 'contacts/show_contact.html', {
+      'contact': contact
+    })
+  except Contact.DoesNotExist as e:
+    raise Http404()
