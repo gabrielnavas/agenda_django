@@ -17,3 +17,4 @@ class Contact(models.Model):
   description = models.TextField(max_length=255) 
   category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
   is_show = models.BooleanField(default=True)
+  photo = models.ImageField(blank=True, upload_to='photos/%Y/%m/%d')
