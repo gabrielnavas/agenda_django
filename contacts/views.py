@@ -27,12 +27,12 @@ def show_contact(request, contact_id):
 
 def search(request):
   term=request.GET.get('term')
+  if not term:
+    return index(request)
   fields = Concat('name', Value(' '), 'last_name')
   contacts = Contact.objects.annotate(name_full=fields).filter(
-    name_full__icontains=term
+    Q(phone__icontains=term) | Q(name_full__icontains=term),
   )
-  print(contacts.query)
-  print(term)
   paginator = Paginator(contacts, 3)
   contacts_paginator = paginator.get_page(term)
   return render(request, 'contacts/search.html', {
