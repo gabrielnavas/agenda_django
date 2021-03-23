@@ -16,3 +16,4 @@ class Contact(models.Model):
   created_at = models.DateField(default=timezone.now)
   description = models.TextField(max_length=255) 
   category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
+  is_show = models.BooleanField(default=True)
